@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Formats.Asn1;
 
 Main();
 
@@ -72,10 +73,24 @@ void MoreGuesses ()
         Console.WriteLine();
         Console.WriteLine();
     }
+    else if (userAnswer - number < -15)
+    {
+        Console.WriteLine();
+        Console.WriteLine("You're wayyyy off. You're too low by more than 15. Step it UPPPPPPPPPPPP!!!");
+        Console.WriteLine();
+        Console.WriteLine();
+    }
+    else if (userAnswer - number > 15)
+    {
+        Console.WriteLine();
+        Console.WriteLine("You're wayyyy off. You're too high by more than 15. Drop it DOWWWWWNNNNNNNNN BUCKAROO BONZAI!!!");
+        Console.WriteLine();
+        Console.WriteLine();
+    }
     else
     {
         Console.WriteLine();
-        Console.Write("Yeah no, way off, you're a faker and we knew it all along, everybody talks about it.");
+        Console.Write("You're a faker and we knew it all along, everybody talks about it. YOU'RE NOT PSYCHIC AT ALL!!!! YOU COULDN'T EVEN GUESS THIS FRIGGIN NUMBER!!!!");
         Console.WriteLine();
         Console.WriteLine();
     }
