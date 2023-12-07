@@ -18,12 +18,32 @@ bool result = false;
 int counter = 0;
 Random rand = new Random();
 int number = rand.Next(0, 100);
+int guesses = 4;
 
+void Difficulty ()
+
+{
+    Console.Write("CHOOSE A DIFFICULTY - TYPE 'EASY', 'MEDIUM', OR 'HARD' TO START =======>>>   ");
+    string difficulty = Console.ReadLine().ToLower();
+    if (difficulty == "easy") 
+    {
+        guesses = 8;
+    }
+    else if (difficulty == "medium") 
+    {
+        guesses = 6;
+    }
+    else 
+    {
+        guesses = 4;
+    }
+
+}
 
 
 bool GuessNumber ()
 {
-    Console.Write($"GUESS THE SECRET NUMBER YOU ABSOLUTELY PSYCHIC NERD (Your Guess: {counter + 1} - You Have {4 - (counter)} Guesses Left)---->   ");
+    Console.Write($"GUESS THE SECRET NUMBER YOU ABSOLUTELY PSYCHIC NERD (Your Guess: {counter + 1} - You Have {guesses - counter} Guesses Left)---->   ");
     string answer = Console.ReadLine();
     Console.WriteLine();
     Console.Write($"YOU THINK THE SECRET NUMBER IS {answer}?????");
@@ -165,13 +185,13 @@ void MoreGuesses ()
 //FoodQuestion();
 //CarQuestion();
 
+Difficulty();
 
-
-while (counter < 5)
+while (counter < guesses + 1)
 
 {
 
-if (counter < 4 && !result) 
+if (counter < guesses && !result) 
     {
         GuessNumber();
         MoreGuesses();
@@ -180,12 +200,12 @@ if (counter < 4 && !result)
     else if (result) 
     {
         Console.Write("God damn you got it right you son of a bitch!!!! Get the hell out of here!!!");
-        counter = 5;
+        counter = guesses + 1;
     }
     else
     {
         Console.Write($"You ran out of guesses, turns out you're not good at this. Such a shame. It was actually {number}.");
-        counter = 5;
+        counter = guesses + 1;
     }
 }
 
